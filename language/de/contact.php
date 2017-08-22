@@ -38,11 +38,11 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACP_CAT_CONTACTADMIN'		=> 'Kontakt Administration',
+	'ACP_CAT_CONTACTADMIN'		=> 'Kontaktformular',
 	'ADD_ATTACHMENT_EXPLAIN'	=> 'Wenn du eine Datei anhängen möchtest, trage dies unten auf der Seite ein.',
 	'CONTACT_BOT_ERROR'			=> 'Du kannst im Moment das Kontaktformular nicht benutzen, da es einen Fehler in der Konfiguration gibt. Es wurde eine E-Mail an den Gründer des Board gesendet.',
 	'CONTACT_BOT_NONE'			=> 'Der Benutzer %1$s hat versucht die „Contact Admin“-Extension auf %2$s zu wenden, um eine %3$s zu senden, aber es sind keine Administratoren vorhanden, die %3$ss von Benutzern erlaubt haben. Bitte rufe die Kontaktbot-Einstellungen im Administrations-Bereich für das Board %4$s auf und wähle die „Board Gründer”-Einstellung',
-	'CONTACT_BOT_SUBJECT'		=> 'Kontakt Administration Extension Fehler',
+	'CONTACT_BOT_SUBJECT'		=> 'Kontaktformular-Fehler',
 	'CONTACT_BOT_USER_MESSAGE'	=> 'Der Benutzer %1$s hat versucht die „Contact Admin“-Extension auf %2$s zu wenden, aber der in den Einstellungen ausgewählte Benutzer ist nicht korrekt. Bitte besuche das Board %3$s und wähle einen anderen Benutzer für die „Contact Administration“-Extension aus.',
 	'CONTACT_BOT_FORUM_MESSAGE'	=> 'Der Benutzer %1$s hat versucht die „Contact Admin“-Extension auf %2$s zu wenden, baber das in den Einstellungen ausgewählte Forum ist nicht korrekt. Bitte besuche das Board %3$s und wähle ein anderes Forum für die „Contact Administration“-Extension aus.',
 	'CONTACT_CONFIRM'			=> 'Bestätigen',
@@ -53,7 +53,7 @@ $lang = array_merge($lang, array(
 	'CONTACT_NO_SUBJ'			=> 'Du hast keinen Betrett eingegeben.',
 	'CONTACT_REASON'			=> 'Grund',
 	'CONTACT_TEMPLATE'			=> '[b]Name:[/b] %1$s' . "\n" . '[b]Email-Addresse:[/b] %2$s' . "\n" . '[b]IP:[/b] %3$s' . "\n" . '[b]Betreff:[/b] %4$s' . "\n" . '[b]Hat die folgende Nachricht in das Kontaktformular eingegeben:[/b] %5$s',
-	'CONTACT_TITLE'				=> 'Kontakt Administration',
+	'CONTACT_TITLE'				=> 'Kontaktformular',
 	'CONTACT_TOO_MANY'			=> 'Du hast die maximale Anzahl an möglichen Versuchen den Bestätigungscode auszufüllen erreicht. Bitte versuche es später noch einmal.',
 
 	'CONTACT_YOUR_NAME'			=> 'Dein Name',
