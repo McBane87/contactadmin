@@ -52,7 +52,7 @@ $lang = array_merge($lang, array(
 	'CONTACT_NO_MSG'			=> 'Du hast keine Nachricht eingegeben.',
 	'CONTACT_NO_SUBJ'			=> 'Du hast keinen Betrett eingegeben.',
 	'CONTACT_REASON'			=> 'Grund',
-	'CONTACT_TEMPLATE'			=> '[b]Name:[/b] %1$s' . "\n" . '[b]Email-Addresse:[/b] %2$s' . "\n" . '[b]IP:[/b] %3$s' . "\n" . '[b]Betreff:[/b] %4$s' . "\n" . '[b]Hat die folgende Nachricht in das Kontaktformular eingegeben:[/b] %5$s',
+	'CONTACT_TEMPLATE'			=> '[b]Name:[/b] %1$s' . "\n" . '[b]Email-Addresse:[/b] %2$s' . "\n" . '[b]Betreff:[/b] %4$s' . "\n" . '[b]Hat die folgende Nachricht in das Kontaktformular eingegeben:[/b] %5$s',
 	'CONTACT_TITLE'				=> 'Kontaktformular',
 	'CONTACT_TOO_MANY'			=> 'Du hast die maximale Anzahl an möglichen Versuchen den Bestätigungscode auszufüllen erreicht. Bitte versuche es später noch einmal.',
 
@@ -65,4 +65,8 @@ $lang = array_merge($lang, array(
 	'CONTACT_NO_NAME'			=> 'Du hast keinen Namen eingetragen.',
 
 	'RETURN_CONTACT'			=> '%sZurück zur Kontaktseite%s',
+
+	'CONTACT_PRIVACYPOLICY'				=> 'Datenschutzerklärung',
+	'CONTACT_PRIVACYPOLICY_EXPLAIN'		=> 'Ich bin damit einverstanden, dass der angegebene Name, die E-Mail-Adresse, der Nachrichtentext sowie meine IP-Adresse gemäß der <a href="/ucp.php?mode=privacy">Datenschutzerklärung</a> gespeichert und verarbeitet werden.',
+	'CONTACT_PRIVACYPOLICY_ERROR'		=> 'Du hast vergessen die Bestätigung für die Datenverarbeitung gemäß Datenschutzerklärung zu zustimmen. Ohne diese Bestätigung kannst du uns keine Nachricht über das Kontaktformular senden.',
 ));
