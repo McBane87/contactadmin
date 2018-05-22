@@ -65,4 +65,8 @@ $lang = array_merge($lang, array(
 	'CONTACT_NO_NAME'			=> 'Du hast keinen Namen eingetragen.',
 
 	'RETURN_CONTACT'			=> '%sZurück zur Kontaktseite%s',
+
+	'CONTACT_PRIVACYPOLICY'				=> 'Datenschutzerklärung',
+	'CONTACT_PRIVACYPOLICY_EXPLAIN'		=> 'Ich bin damit einverstanden, dass der angegebene Name, die E-Mail-Adresse, der Nachrichtentext sowie meine IP-Adresse gemäß der <a href="/ucp.php?mode=privacy">Datenschutzerklärung</a> gespeichert und verarbeitet werden.',
+	'CONTACT_PRIVACYPOLICY_ERROR'		=> 'Du hast vergessen die Bestätigung für die Datenverarbeitung gemäß Datenschutzerklärung zu zustimmen. Ohne diese Bestätigung kannst du uns keine Nachricht über das Kontaktformular senden.',
 ));

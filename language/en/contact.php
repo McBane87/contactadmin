@@ -51,7 +51,7 @@ $lang = array_merge($lang, array(
 	'CONTACT_NO_MSG'			=> 'You didn’t enter a message.',
 	'CONTACT_NO_SUBJ'			=> 'You didn’t enter a subject.',
 	'CONTACT_REASON'			=> 'Reason',
-	'CONTACT_TEMPLATE'			=> '[b]Name:[/b] %1$s' . "\n" . '[b]Email Address:[/b] %2$s' . "\n" . '[b]IP:[/b] %3$s' . "\n" . '[b]Subject:[/b] %4$s' . "\n" . '[b]Has entered the following message into the contact form:[/b] %5$s',
+	'CONTACT_TEMPLATE'			=> '[b]Name:[/b] %1$s' . "\n" . '[b]Email Address:[/b] %2$s' . "\n" . '[b]Subject:[/b] %4$s' . "\n" . '[b]Has entered the following message into the contact form:[/b] %5$s',
 	'CONTACT_TITLE'				=> 'Contact Administration',
 	'CONTACT_TOO_MANY'			=> 'You have exceeded the maximum number of contact confirmation attempts for this session. Please try again later.',
 
@@ -64,4 +64,8 @@ $lang = array_merge($lang, array(
 	'CONTACT_NO_NAME'			=> 'You didn’t enter a name.',
 
 	'RETURN_CONTACT'			=> '%sReturn to the contact page%s',
+
+	'CONTACT_PRIVACYPOLICY'				=> 'Privacy policy',
+	'CONTACT_PRIVACYPOLICY_EXPLAIN'		=> 'I confirm that the given name, e-mail adress, message text and my IP-address will be processed and stored by the owner of the board according to the <a href="/ucp.php?mode=privacy">Privacy policy</a>.',
+	'CONTACT_PRIVACYPOLICY_ERROR'		=> 'You did forget to check the confirm box for the Privacy policy. Without your confirmation you will be not able to send us a message with the contact form.',
 ));
