@@ -67,6 +67,6 @@ $lang = array_merge($lang, array(
 	'RETURN_CONTACT'			=> '%sZurück zur Kontaktseite%s',
 
 	'CONTACT_PRIVACYPOLICY'				=> 'Datenschutzerklärung',
-	'CONTACT_PRIVACYPOLICY_EXPLAIN'		=> 'Ich bin damit einverstanden, dass der angegebene Name, die E-Mail-Adresse, der Nachrichtentext sowie meine IP-Adresse gemäß der <a href="/ucp.php?mode=privacy">Datenschutzerklärung</a> gespeichert und verarbeitet werden.',
+	'CONTACT_PRIVACYPOLICY_EXPLAIN'		=> 'Ich bin damit einverstanden, dass der angegebene Name, die E-Mail-Adresse, der Nachrichtentext sowie meine IP-Adresse gemäß der <a href="' . append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=privacy') . '">Datenschutzerklärung</a> gespeichert und verarbeitet werden.',
 	'CONTACT_PRIVACYPOLICY_ERROR'		=> 'Du hast vergessen die Bestätigung für die Datenverarbeitung gemäß Datenschutzerklärung zu zustimmen. Ohne diese Bestätigung kannst du uns keine Nachricht über das Kontaktformular senden.',
 ));
