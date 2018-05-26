@@ -175,6 +175,7 @@ class main_controller
 			'contact_reason'	=> $this->request->variable('contact_reason', '', true),
 			'contact_subject'	=> $this->request->variable('contact_subject', '', true),
 			'contact_message'	=> $this->request->variable('message', '', true),
+			'pp_check'		=> $this->request->variable('pp_check', '', true),
 		);
 
 		add_form_key('contactadmin');
@@ -256,6 +257,12 @@ class main_controller
 				$error[] = $this->user->lang('CONTACT_NO_MSG');
 			}
 
+			// Check for Privacy policy check
+			if (empty($data['pp_check']))
+			{
+				$error[] = $this->user->lang('CONTACT_PRIVACYPOLICY_ERROR');
+			}
+			
 			// CAPTCHA check
 			if ($this->config['contactadmin_confirm'] && !$captcha->is_solved())
 			{

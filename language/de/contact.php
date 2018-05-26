@@ -57,7 +57,7 @@ $lang = array_merge($lang, array(
 	'CONTACT_TOO_MANY'		=> 'Du hast die maximale Anzahl an Versuchen erreicht. Bitte versuche es spaeter erneut.',
 
 	'CONTACT_YOUR_NAME'		=> 'Name',
-	'CONTACT_YOUR_NAME_EXPLAIN'	=> 'Bitte gib einen Namen ein, damit die Nachricht eine Identität hat.',
+	'CONTACT_YOUR_NAME_EXPLAIN'	=> 'Bitte gib einen Namen ein, damit die Nachricht eine Identitaet hat.',
 	'CONTACT_YOUR_EMAIL'		=> 'E-Mail Adresse',
 	'CONTACT_YOUR_EMAIL_EXPLAIN'	=> 'Bitte gib eine korrekte E-Mail Adresse ein, damit wir dich Kontaktieren koennen.',
 
@@ -65,4 +65,8 @@ $lang = array_merge($lang, array(
 	'CONTACT_NO_NAME'		=> 'Du hast keinen Namen eingegeben.',
 
 	'RETURN_CONTACT'		=> '%sZurueck zum Kontaktformular%s',
+	
+	'CONTACT_PRIVACYPOLICY'			=> 'Datenschutzerklaerung',
+ 	'CONTACT_PRIVACYPOLICY_EXPLAIN'		=> 'Ich bin damit einverstanden, dass der angegebene Name, die E-Mail-Adresse, der Nachrichtentext sowie meine IP-Adresse gemaess der <a href="/ucp.php?mode=privacy">Datenschutzerklaerung</a> gespeichert und verarbeitet werden.',
+ 	'CONTACT_PRIVACYPOLICY_ERROR'		=> 'Du hast vergessen die Bestaetigung fuer die Datenverarbeitung gemaess Datenschutzerklaerung zu zustimmen. Ohne diese Bestaetigung kannst du uns keine Nachricht ueber das Kontaktformular senden.',
 ));
