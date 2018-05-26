@@ -1,0 +1,9 @@
+Subject: {SUBJECT}
+
+Hallo {ADM_USERNAME},
+
+Jemand mit dem Namen "{USERNAME}", E-Mail Adresse "{USER_EMAIL}" und IP Adresse "{USER_IP}" hat Ihnen eine Nachricht, via Kontaktformular der Seite "{SITENAME}" am "{DATE}" gesendet:
+
+{MESSAGE}
+
+{EMAIL_SIG}
