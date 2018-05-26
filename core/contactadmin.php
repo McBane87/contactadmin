@@ -117,7 +117,7 @@ class contactadmin
 	* @param string		$mode		what we are checking
 	* @param int		$forum_id	the forum id selected in ACP
 	* @param int		$bot_id		the id of the bot selected in the ACP
-	* @param string		$method		the type of contact we are using email, forum post or PM
+	* @param string		$method		the type of contact we are using email, email_board, forum post or PM
 	* ensures postable forum and correct "bot"
 	*/
 	public function contact_check($mode, $forum_id = false, $bot_id = false, $method = false)
@@ -220,11 +220,57 @@ class contactadmin
 				}
 			break;
 
+			case 'contact_check_board':
+				
+				if (isset($this->config['board_contact']))
+				{
+					$email = $this->config['board_contact'];
+				}
+				else
+				{
+					$email = '<unknwon>';
+				}
+				
+				// we didn't get a result
+				// send an email if board enabled
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL) && $this->config['email_enable'])
+				{
+					// send an email to the board default
+					$email_template = '@rmcgirr83_contactadmin/contact_error_user';
+					$email_message = sprintf($this->user->lang('CONTACT_BOT_EMAIL_MESSAGE'), $this->user->data['username'], $this->config['sitename'], $server_url);
+					$this->contact_send_email($email_template, $email_message);
+
+					// disable the extension
+					$this->config->set('contactadmin_enable', 0);
+
+					// add an entry into the log error table
+					$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_CONTACT_EMAIL_WRONG',  time(), array($email, $row));
+
+					// show a message to the user
+					$message = $this->user->lang('CONTACT_BOT_ERROR') . '<br /><br />' . sprintf($this->user->lang('RETURN_INDEX'), '<a href="' . append_sid("{$this->root_path}index.$phpEx") . '">', '</a>');
+
+					throw new http_exception(503, $message);
+				}
+				else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+				{
+					// disable the extension
+					$this->config->set('contactadmin_enable', 0);
+
+					// add an entry into the log error table
+					$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_CONTACT_EMAIL_WRONG',  time(), array($email, $row));
+
+					// show a message to the user
+					$message = sprintf($this->user->lang('CONTACT_DISABLED'), '<a href="mailto:' . $this->config['board_contact'] . '">', '</a>');
+
+					throw new http_exception(503, $message);
+				}
+			break;
+			
 			case 'contact_nobody':
 
 				//this is only called if there are no contact admins available
 				// for pm'ing or for emailing to per the preferences set by the admin user in their profiles
-				if ($method == contact_constants::CONTACT_METHOD_EMAIL)
+				if ($method == contact_constants::CONTACT_METHOD_EMAIL || $method == contact_constants::CONTACT_METHOD_EMAIL_BOARD)
 				{
 					$error = $this->user->lang('EMAIL');
 				}
@@ -373,9 +419,10 @@ class contactadmin
 	public function method_select($value, $key = '')
 	{
 		$radio_ary = array(
-			contact_constants::CONTACT_METHOD_EMAIL	=> 'CONTACT_METHOD_EMAIL',
-			contact_constants::CONTACT_METHOD_POST	=> 'CONTACT_METHOD_POST',
-			contact_constants::CONTACT_METHOD_PM	=> 'CONTACT_METHOD_PM',
+			contact_constants::CONTACT_METHOD_EMAIL		=> 'CONTACT_METHOD_EMAIL',
+			contact_constants::CONTACT_METHOD_POST		=> 'CONTACT_METHOD_POST',
+			contact_constants::CONTACT_METHOD_PM		=> 'CONTACT_METHOD_PM',
+			contact_constants::CONTACT_METHOD_EMAIL_BOARD	=> 'CONTACT_METHOD_EMAIL_BOARD',
 		);
 		return h_radio('contact_method', $radio_ary, $value, $key);
 	}
@@ -451,6 +498,27 @@ class contactadmin
 			// we have no one to send anything to
 			// notify the board default
 			$this->contact_check('contact_nobody', false, false, (int) $this->config['contactadmin_method']);
+		}
+
+		return $contact_users;
+	}
+	
+	/**
+	* get the board contact mail address
+	*/
+	public function board_contact_mail()
+	{
+		$contact_users = array();
+		
+		$contact_user['user_id'] = 0;
+		$contact_user['username'] = 'Administrator';
+		$contact_user['user_email'] = $this->config['board_contact'];
+		$contact_user['user_lang'] = 'en';
+		$contact_user['user_jabber'] = '';
+		$contact_user['user_notify_type'] = 0;
+		
+		if (filter_var($contact_user['user_email'], FILTER_VALIDATE_EMAIL)) {
+			$contact_users[0] = $contact_user;
 		}
 
 		return $contact_users;

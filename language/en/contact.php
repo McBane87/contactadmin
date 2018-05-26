@@ -43,6 +43,7 @@ $lang = array_merge($lang, array(
 	'CONTACT_BOT_NONE'			=> 'The user %1$s tried to use the Contact Admin Extension at %2$s to send a %3$s, but there are no Administrators that allow %3$ss by users. Please enter the Contact Bot Configuration in the Admin Panel for the forum %4$s and choose the “Board Founder” option',
 	'CONTACT_BOT_SUBJECT'		=> 'Contact Administration Extension Error',
 	'CONTACT_BOT_USER_MESSAGE'	=> 'The user %1$s tried to use the Contact Admin extension at %2$s, but the user selected in the configuration is incorrect. Please visit the forum %3$s and choose a different user in the ACP for the Contact Administration.',
+	'CONTACT_BOT_EMAIL_MESSAGE'	=> 'The user %1$s tried to use the Contact Admin extension at %2$s, but the email selected in the configuration is incorrect. Please visit the forum %3$s and choose a different email in the ACP for “Client Communication -> Email settings -> Contact email address”.',
 	'CONTACT_BOT_FORUM_MESSAGE'	=> 'The user %1$s tried to use the Contact Admin extension at %2$s, but the forum selected in the configuration is incorrect. Please visit the forum %3$s and choose a different forum in the ACP for the Contact Administration.',
 	'CONTACT_CONFIRM'			=> 'Confirm',
 	'CONTACT_DISABLED'			=> 'You can’t use the contact form at the moment because it is disabled.',

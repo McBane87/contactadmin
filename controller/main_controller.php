@@ -131,7 +131,7 @@ class main_controller
 		}
 
 		// Trigger error if board email is disabled but email set in config for contact
-		if (!$this->config['email_enable'] && $this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL)
+		if (!$this->config['email_enable'] && ($this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL || $this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL_BOARD))
 		{
 			$this->config->set('contactadmin_enable', 0);
 
@@ -155,6 +155,11 @@ class main_controller
 		{
 			// quick check to ensure our "bot" is good
 			$this->contactadmin->contact_check('contact_check_bot', false, $this->config['contactadmin_bot_user']);
+		}
+		else if ($this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL_BOARD)
+		{
+			// quick check to ensure our "email" is good
+			$this->contactadmin->contact_check('contact_check_board');
 		}
 
 		// Only have contact CAPTCHA confirmation for guests, if the option is enabled
@@ -277,7 +282,7 @@ class main_controller
 				$user_name = $data['username'];
 			}
 
-			if ($this->config['contactadmin_method'] != contact_constants::CONTACT_METHOD_EMAIL)
+			if ($this->config['contactadmin_method'] != contact_constants::CONTACT_METHOD_EMAIL && $this->config['contactadmin_method'] != contact_constants::CONTACT_METHOD_EMAIL_BOARD)
 			{
 				// change the users stuff
 				if ($this->config['contactadmin_bot_poster'] == contact_constants::CONTACT_POST_ALL || ($this->config['contactadmin_bot_poster'] == contact_constants::CONTACT_POST_GUEST && !$this->user->data['is_registered']))
@@ -342,7 +347,11 @@ class main_controller
 			// no errors, let's proceed
 			if (!sizeof($error))
 			{
-				if ($this->config['contactadmin_method'] != contact_constants::CONTACT_METHOD_POST)
+				if ($this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL_BOARD)
+				{
+					$contact_users = $this->contactadmin->board_contact_mail();
+				}
+				else if ($this->config['contactadmin_method'] != contact_constants::CONTACT_METHOD_POST)
 				{
 					$contact_users = $this->contactadmin->admin_array();
 				}
@@ -435,7 +444,7 @@ class main_controller
 
 					break;
 
-					case contact_constants::CONTACT_METHOD_EMAIL:
+					case contact_constants::CONTACT_METHOD_EMAIL || contact_constants::CONTACT_METHOD_EMAIL_BOARD:
 					default:
 
 						// Send using email (default)..first remove all bbcodes
@@ -583,10 +592,10 @@ class main_controller
 
 			'L_CONTACT_YOUR_NAME_EXPLAIN'	=> $this->config['contactadmin_username_chk'] ? sprintf($this->user->lang($this->config['allow_name_chars'] . '_EXPLAIN'), $this->config['min_name_chars'], $this->config['max_name_chars']) : $this->user->lang('CONTACT_YOUR_NAME_EXPLAIN'),
 
-			'S_ATTACH_BOX'			=> ($this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL) ? false : $attachment_allowed,
+			'S_ATTACH_BOX'			=> ($this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL || $this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL_BOARD) ? false : $attachment_allowed,
 			'S_FORM_ENCTYPE'		=> $form_enctype,
 			'S_CONFIRM_REFRESH'		=> ($this->config['contactadmin_confirm']) ? true : false,
-			'S_EMAIL'				=> ($this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL) ? true : false,
+			'S_EMAIL'				=> ($this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL || $this->config['contactadmin_method'] == contact_constants::CONTACT_METHOD_EMAIL_BOARD) ? true : false,
 
 			'S_HIDDEN_FIELDS'		=> $s_hidden_fields,
 			'S_ERROR'				=> (isset($error) && sizeof($error)) ? implode('<br />', $error) : '',
